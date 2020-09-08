@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AllsujetComponent } from './allsujet/allsujet.component';
 import { SujetinfoComponent } from './sujetinfo/sujetinfo.component';
+import { AuthInterceptor } from './common/authintersepter';
 
 
 
@@ -56,7 +57,10 @@ import { SujetinfoComponent } from './sujetinfo/sujetinfo.component';
     MatDatepickerModule
 
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
